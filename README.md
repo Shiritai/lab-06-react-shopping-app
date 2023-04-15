@@ -4,7 +4,9 @@
 
 ## Author
 
-[Shiritai](https://github.com/Shiritai)
+The first two commits are from TA of the course, initializing basic framework of the application, see commits and ppt in `doc` for more details.
+
+For the implementation part, all codes are committed by [Shiritai](https://github.com/Shiritai).
 
 ## Note
 
