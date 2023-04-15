@@ -47,7 +47,7 @@ export class Root extends React.Component {
 
     // TODO-5: clear shopping cart
     handleClearCart = () => {
-
+        this.setState({cartList: []})
     }
 
     // TODO-6: remove specific item in shopping cart
@@ -89,6 +89,8 @@ export class Root extends React.Component {
                         itemPrice={this.itemPrice}
                         cartList={this.state.cartList}
                         handleDeleteCartItem={this.handleDeleteCartItem}
+                        handleAdjustMoney={this.handleAdjustMoney}
+                        handleClearCart={this.handleClearCart}
                     />
                 </Grid>
             </Grid>

@@ -59,11 +59,17 @@ class Cart extends React.Component {
 
     // TODO-7: confirm pay money
     handleConfirm = () => {
-
+        handleAdjustMoney(-this.state.total).then((res) => {
+            alert(res)
+            handleClearCart()
+            this.setState({ total: 0 })
+        }).catch((errMsg) => {
+            alert(errMsg)
+        })
     }
 
     render() {
-        const { classes, itemPrice, cartList, handleDeleteCartItem } = this.props;
+        const { classes, itemPrice, cartList, handleDeleteCartItem, handleClearCart } = this.props;
 
         return (
             <div>
@@ -96,12 +102,13 @@ class Cart extends React.Component {
                 <Divider />
                 <Grid container justifyContent="flex-end" wrap="nowrap">
                     {/* TODO-7: specify button event handler */}
-                   <Button
+                    <Button
                         className={classes.button}
                         startIcon={<CheckIcon />}
                         variant="contained"
                         color="primary"
                         size="large"
+                        onClick={() => {this.handleConfirm()}}
                     >
                         {"Confirm"}
                     </Button>
@@ -112,6 +119,7 @@ class Cart extends React.Component {
                         variant="contained"
                         color="secondary"
                         size="large"
+                        onClick={() => handleClearCart()}
                     >
                         {"Clear"}
                     </Button>
