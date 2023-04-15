@@ -71,7 +71,19 @@ class Cart extends React.Component {
                 <Divider />
                 <Paper className={classes.paper} elevation={3}>
                     <Grid className={classes.cartItemContainer}>
-                        {/* TODO-3: use CartItem to show items in cart */}
+                        {
+                            /* TODO-3: use CartItem to show items in cart */
+                            cartList.map((val, idx) => {
+                                return <CartItem 
+                                    key={idx}
+                                    name={val.name}
+                                    idx={idx}
+                                    amount={val.amount}
+                                    price={itemPrice[val.name]}
+                                    handleDeleteCartItem={handleDeleteCartItem}
+                                />
+                            })
+                        }
 
                     </Grid>
                     <Divider />
