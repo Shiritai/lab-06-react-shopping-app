@@ -42,7 +42,7 @@ class MenuItem extends React.Component {
     }
 
     render() {
-        const { classes, item, price, amount } = this.props;
+        const { classes, item, price, amount, handleSetAmount } = this.props;
         
         return (
             <div>
@@ -61,11 +61,15 @@ class MenuItem extends React.Component {
                 </Paper>
                 <Grid container direction="row" justifyContent="space-evenly">
                     {/* TODO-1: specify button event handler */}
-                    <IconButton color="primary">
+                    <IconButton color="primary" 
+                        onClick={() => {handleSetAmount(item, amount - 1)}} 
+                    >
                         <RemoveCircleIcon className={classes.icon} />
                     </IconButton>
                     <span className={classes.amount}>{amount}</span>
-                    <IconButton color="primary">
+                    <IconButton color="primary"
+                        onClick={() => {handleSetAmount(item, amount + 1)}} 
+                    >
                         <AddCircleIcon className={classes.icon} />
                     </IconButton>
                 </Grid>

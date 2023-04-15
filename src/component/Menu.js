@@ -38,7 +38,10 @@ class Menu extends React.Component {
 
     // TODO-1: set item amount
     handleSetAmount = (item, amount) => {
-
+        if (amount >= 0) {
+            this.state.itemAmount[item] = amount
+            this.setState(this.state)
+        }
     }
 
     // TODO-2: add to shopping cart
@@ -67,11 +70,13 @@ class Menu extends React.Component {
                             item="Burger"
                             price={itemPrice.Burger}
                             amount={this.state.itemAmount.Burger}
+                            handleSetAmount={this.handleSetAmount}
                         />
                         <MenuItem
                             item="Fries"
                             price={itemPrice.Fries}
                             amount={this.state.itemAmount.Fries}
+                            handleSetAmount={this.handleSetAmount}
                         />
                     </Grid>
                     <Grid item container justifyContent="space-evenly">
@@ -79,11 +84,13 @@ class Menu extends React.Component {
                             item="Nugget"
                             price={itemPrice.Nugget}
                             amount={this.state.itemAmount.Nugget}
+                            handleSetAmount={this.handleSetAmount}
                         />
                         <MenuItem
                             item="Cola"
                             price={itemPrice.Cola}
                             amount={this.state.itemAmount.Cola}
+                            handleSetAmount={this.handleSetAmount}
                         />
                     </Grid>
                 </Grid>
