@@ -52,7 +52,7 @@ export class Root extends React.Component {
 
     // TODO-6: remove specific item in shopping cart
     handleDeleteCartItem = (idx) => {
-
+        this.setState({cartList: this.state.cartList.filter((_, i) => i != idx)})
     }
 
     // To pay money or charge
@@ -88,6 +88,7 @@ export class Root extends React.Component {
                     <Cart
                         itemPrice={this.itemPrice}
                         cartList={this.state.cartList}
+                        handleDeleteCartItem={this.handleDeleteCartItem}
                     />
                 </Grid>
             </Grid>

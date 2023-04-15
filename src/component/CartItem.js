@@ -73,7 +73,7 @@ class CartItem extends React.Component {
                     <Divider orientation="vertical" flexItem />
                     {/* TODO-6: specify button event handler */}
                     <IconButton
-                        
+                        onClick={() => {handleDeleteCartItem(idx)}}
                     >
                         <DeleteIcon className={classes.deleteIcon}/>
                     </IconButton>

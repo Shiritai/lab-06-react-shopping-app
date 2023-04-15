@@ -52,7 +52,9 @@ class Cart extends React.Component {
 
     componentDidUpdate(prevProps) {
         // TODO-4: calculate total price
-
+        if (prevProps === this.props)
+            return
+        this.setState({ total: this.props.cartList.reduce((p, val) => p + val.amount * this.props.itemPrice[val.name], 0) })
     }
 
     // TODO-7: confirm pay money
@@ -61,7 +63,7 @@ class Cart extends React.Component {
     }
 
     render() {
-        const { classes, itemPrice, cartList } = this.props;
+        const { classes, itemPrice, cartList, handleDeleteCartItem } = this.props;
 
         return (
             <div>
