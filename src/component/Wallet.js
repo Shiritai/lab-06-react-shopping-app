@@ -10,6 +10,7 @@ import {
 
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined';
+import { createRef } from 'react';
 
 const styles = theme => ({
     title: {
@@ -57,11 +58,18 @@ class Wallet extends React.Component {
         this.state = {
             chargeMoney: "",
         };
+
+        this.textRef = createRef()
     }
 
     // TODO-9: charge money
     handleChargeMoney = () => {
-
+        this.props.handleAdjustMoney(parseFloat(this.state.chargeMoney)).then(() => {
+            this.setState({ chargeMoney: "" })
+            this.textRef.current.value = ""
+        }).catch(() => {
+            console.log("Unknown Error!")
+        })
     }
 
     render() {
@@ -83,16 +91,22 @@ class Wallet extends React.Component {
                             {/* TODO-8: specify event handler to set chargeMoney */}
                             <TextField
                                 className={classes.chargeInput}
+                                inputRef={this.textRef}
                                 label="Charge"
                                 variant="outlined"
                                 size="small"
                                 type="number"
                                 fullWidth
+                                onChange={(ev) => {
+                                    this.setState({ chargeMoney: ev.target.value })
+                                }}
                             />
                         </Grid>
                         <Grid item container xs={2}>
                             {/* TODO-9: specify button event handler */}
-                            <IconButton className={classes.chargeButton}>
+                            <IconButton className={classes.chargeButton}
+                                onClick={() => this.handleChargeMoney()}
+                            >
                                 <AddBoxOutlinedIcon className={classes.icon} color='primary' />
                             </IconButton>
                         </Grid>

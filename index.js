@@ -83,6 +83,7 @@ export class Root extends React.Component {
                     {/* TODO: pass functions down to children as props */}
                     <Wallet
                         money={this.state.money}
+                        handleAdjustMoney={this.handleAdjustMoney}
                     />
                     {/* TODO: pass functions down to children as props */}
                     <Cart
