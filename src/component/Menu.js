@@ -46,7 +46,15 @@ class Menu extends React.Component {
 
     // TODO-2: add to shopping cart
     handleAddToCart = () => {
-
+        this.props.handleAddToCart(this.state.itemAmount)
+        this.setState({
+            itemAmount: {
+                Burger: 0,
+                Fries: 0,
+                Nugget: 0,
+                Cola: 0,
+            }
+        })
     }
 
     render() {
@@ -103,6 +111,7 @@ class Menu extends React.Component {
                         variant="contained"
                         color="primary"
                         size="large"
+                        onClick={() => {this.handleAddToCart()}}
                     >
                         {"Add To Cart"}
                     </Button>

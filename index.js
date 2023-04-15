@@ -32,7 +32,17 @@ export class Root extends React.Component {
     // TODO-2: add new item to shopping cart
     // Hint: check CartItem for the format of the items in the cart
     handleAddToCart = (itemAmount) => {
-
+        let cartList = this.state.cartList
+        for (const it in itemAmount) {
+            if (itemAmount[it] > 0) {
+                cartList.push({
+                    name: it,
+                    amount: itemAmount[it]
+                })
+            }
+        }
+        console.log(cartList)
+        this.setState({cartList: cartList})
     }
 
     // TODO-5: clear shopping cart
@@ -65,6 +75,7 @@ export class Root extends React.Component {
                     {/* TODO: pass functions down to children as props */}
                     <Menu
                         itemPrice={this.itemPrice}
+                        handleAddToCart={this.handleAddToCart}
                     />
                 </Grid>
                 <Divider orientation="vertical"/>
